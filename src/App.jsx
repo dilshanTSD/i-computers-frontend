@@ -1,16 +1,29 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import HomePage from './pages/homePage'
+import LoginPage from './pages/loginPage'
 import ProductCard from './Components/productCard'
+import RegisterPage from './pages/registerPage'
+import AdminPage from './pages/adminPage'
+import TestPage from './pages/testPage'
+
 
 function App() {
   
 
   return (
-    <div>
+    <div className="w-full h-screen bg-accent">
+        <Routes>
 
-      <ProductCard name="Apple iphone 5s" Price="100" img="https://picsum.photos/id/3/200/300"/>
-      <ProductCard name="Apple Laptop" Price="1000" img="https://picsum.photos/id/0/200/300"/>
-      <ProductCard name="Women's shoes" Price="50" img="https://picsum.photos/id/21/200/300"/>
 
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/register" element={<RegisterPage/>} />
+            <Route path="/admin/*" element={<AdminPage/>} />
+            <Route path='/test' element={<TestPage/>} />
+
+
+        </Routes>
     </div>
 
   )
