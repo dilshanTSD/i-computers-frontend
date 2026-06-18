@@ -12,12 +12,22 @@ export default function LoginPage() {
     //send http reqest to backend
   }
   return (
-    <div className="w-full h-screen bg-[url('/bg.jpg')] bg-cover bg-center flex justify-center items-center">
-      <div className="w-[435px] h-[560px] backdrop-blur-md shadow-2xl rounded-lg p-2 flex flex-col items-center">
-        <img src="logo.png" className="w-[200px] h-[100px] object-cover" />
-        <h1 className="text-3xl font-bold text-secondary mt-0">Login</h1>
+    <div className="w-full h-screen flex justify-center items-center relative overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+      >
+        <source src="/bg.mp4" type="video/mp4" />
+      </video>
 
-        <label className="w-full mt-5 ml-4 mb-1 text-secondary font-semibold">
+      <div className="w-[435px] h-[560px] backdrop-blur-xs bg-white/10 shadow-2xl rounded-lg p-6 flex flex-col items-center border border-white/20 z-10">
+        <img src="logo.png" className="w-[200px] h-[100px] object-cover" />
+        <h1 className="text-3xl font-bold text-shadow-inherit mt-0">Login</h1>
+
+        <label className="w-full mt-5 ml-4 mb-1 text-white font-semibold">
           Email
         </label>
         <input
@@ -26,10 +36,10 @@ export default function LoginPage() {
             setEmail(e.target.value);
           }}
           type="email"
-          className="w-100 h-12 rounded-lg bg-secondary/5 border-2 border-accent focus:border-secondary/80 outline-none px-2 text-secondary ml-6 mr-4"
+          className="w-100 h-12 rounded-lg bg-secondary/5 border-2 border-accent/70 focus:border-black/80 outline-none px-2 text-white ml-6 mr-4"
           placeholder="user@gmail.com"
         />
-        <label className="w-full mt-5 ml-4 mb-1 text-secondary font-semibold">
+        <label className="w-full mt-5 ml-4 mb-1 text-white font-semibold">
           Password
         </label>
         <input
@@ -37,7 +47,7 @@ export default function LoginPage() {
             setPassword(e.target.value);
           }}
           type="password"
-          className="w-100 h-12 rounded-lg bg-secondary/5 border-2 border-accent focus:border-secondary/80 outline-none px-2 text-secondary ml-6 mr-4"
+          className="w-100 h-12 rounded-lg bg-secondary/5 border-2 border-accent/70 focus:border-black/80 outline-none px-2 text-white ml-6 mr-4"
           placeholder="**********"
         />
         <p className="w-full text-right mt-3 mr-6">
@@ -48,7 +58,7 @@ export default function LoginPage() {
         </p>
         <button
           onClick={handlLogin}
-          className="w-100 h-12 bg-accent rounded-lg text-white mt-3 hover:bg-accent/90 transition duration-300"
+          className="w-100 h-12 bg-accent/70 rounded-lg text-white font-semibold mt-3 hover:bg-accent/90 transition duration-300"
         >
           Login
         </button>
@@ -58,7 +68,7 @@ export default function LoginPage() {
             here
           </Link>
         </p>
-        <button className="w-100 h-12 bg-none rounded-lg text-black text-shadow-accent mt-3 border-none bg-secondary/20 hover:text-secondary hover:bg-secondary/30 transition-colors flex items-center justify-center gap-1">
+        <button className="w-100 h-12 bg-none rounded-lg text-black text-shadow-accent mt-3 border-none bg-secondary/20 hover:text-black hover:bg-secondary/60 transition-colors flex items-center justify-center gap-1">
           <FcGoogle />
           Login with google
         </button>
