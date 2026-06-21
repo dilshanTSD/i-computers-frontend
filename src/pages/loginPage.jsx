@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import axios from "axios";
@@ -8,6 +8,7 @@ import api from "../lib/api";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handlLogin() {
     // axios
@@ -23,10 +24,17 @@ export default function LoginPage() {
       })
       .then((res) => {
         toast.success("Login Succesful");
-        console.log(res.data.token);
 
         const isAdmin = res.data.isAdmin;
-        console.log(res.data, isAdmin);
+        if (res.data.isAdmin) {
+          //admin dashboard
+          //window.location.href = "/admin";
+          navigate("/admin");
+        } else {
+          //window.location.href = "/";
+          //homepage
+          navigate("/");
+        }
 
         //browser store
         localStorage.setItem("token", res.data.token);
@@ -50,14 +58,20 @@ export default function LoginPage() {
         <source src="/bg.mp4" type="video/mp4" />
       </video>
 
-      <div className="w-[435px] h-[560px] backdrop-blur-xs bg-white/10 shadow-2xl rounded-lg p-6 flex flex-col items-center border border-white/20 z-10">
-        <img src="logo.png" className="w-[200px] h-[100px] object-cover" />
-        <h1 className="text-3xl font-bold text-shadow-inherit mt-0">Login</h1>
+      <div className="w-[435px] h-[560px] backdrop-blur-sm bg-white/10 shadow-2xl rounded-lg p-6 flex flex-col items-center border border-white/20 z-10">
+        <img
+          src="logo.png"
+          className="w-[200px] h-[100px] object-cover drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+        />
+        <h1 className="text-3xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mt-4">
+          Login
+        </h1>
 
         <label className="w-full mt-5 ml-4 mb-1 text-white font-semibold">
           Email
         </label>
         <input
+          value={email}
           onChange={(e) => {
             //toast.success(e.target.value);
             setEmail(e.target.value);
@@ -70,6 +84,7 @@ export default function LoginPage() {
           Password
         </label>
         <input
+          value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
@@ -95,9 +110,9 @@ export default function LoginPage() {
             here
           </Link>
         </p>
-        <button className="w-full h-12 bg-none rounded-lg text-black text-shadow-accent mt-3 border-none bg-secondary/20 hover:text-black hover:bg-secondary/60 transition-colors flex items-center justify-center gap-1">
-          <FcGoogle />
-          Login with google
+        <button className="w-full h-12 bg-white/20 rounded-lg text-white mt-3 border border-white/10 hover:bg-white/30 transition duration-300 flex items-center justify-center gap-2 font-semibold">
+          <FcGoogle className="text-xl" />
+          Login with Google
         </button>
       </div>
     </div>
