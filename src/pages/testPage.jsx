@@ -1,6 +1,6 @@
 import { useState } from "react";
-// සටහන: createClient සහ toast මේ page එකට දැන් ඕන වෙන්නේ නැහැ (uploadMedia එක ඇතුලේ තියෙන නිසා),
-// හැබැයි ඔයා මෙතන toast පාවිච්චි කරන නිසා toast එක විතරක් තියාගමු.
+//createClient සහ toast මේ page එකට දැන් ඕන වෙන්නේ නැහැ (uploadMedia එක ඇතුලේ තියෙන නිසා),
+//හැබැයි මෙතන toast පාවිච්චි කරන නිසා toast එක විතරක් තියාගමු.
 import toast from "react-hot-toast";
 import uploadMedia from "../lib/uploadMedia";
 
@@ -14,7 +14,7 @@ export default function TestPage() {
 
       if (url) {
         console.log("Uploaded File URL:", url);
-        // මෙතනින් එහාට ඔයාට මේ URL එක Database එකට දාන්න හෝ වෙන වැඩකට ගන්න පුළුවන්.
+        // මෙතනින් එහාට මේ URL එක Database එකට දාන්න හෝ වෙන වැඩකට ගන්න පුළුවන්.
       }
     } catch (err) {
       console.error(err); // මෙතන error එක err ලෙස නිවැරදි කලා
